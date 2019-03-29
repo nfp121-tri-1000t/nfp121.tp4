@@ -1,9 +1,10 @@
 package question2;
 
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
+import java.util.*;
 public class IHMQuestion2_1 extends JFrame {
 
     private JButton boutonA = new JButton("A");
@@ -29,11 +30,40 @@ public class IHMQuestion2_1 extends JFrame {
 
         // à compléter
         // le bouton A a 3 observateurs jbo1, jbo2 et jbo3
-
+            boutonA.addActionListener(new ActionListener(){ 
+                    public void actionPerformed(ActionEvent ae){
+                        contenu.append("observateur jbo3: clic du bouton A\n");
+                    }
+                });
+               boutonA.addActionListener(new ActionListener(){ 
+                    public void actionPerformed(ActionEvent ae){
+                        contenu.append("observateur jbo2: clic du bouton A\n");
+                    }
+                });
+                 boutonA.addActionListener(new ActionListener(){ 
+                    public void actionPerformed(ActionEvent ae){
+                        contenu.append("observateur jbo1: clic du bouton A\n");
+                    }
+                });
+        // ActionListener obj1 = new EcouteurDeBouton();
+         
         // le bouton B a 2 observateurs jbo1 et jbo2
-
+                boutonB.addActionListener(new ActionListener(){ 
+                    public void actionPerformed(ActionEvent ae){
+                        contenu.append("observateur jbo2: clic du bouton B\n");
+                    }
+                });
+                 boutonB.addActionListener(new ActionListener(){ 
+                    public void actionPerformed(ActionEvent ae){
+                        contenu.append("observateur jbo1: clic du bouton B\n");
+                    }
+                });
         // le bouton C a 1 observateur jbo1
-
+                   boutonC.addActionListener(new ActionListener(){ 
+                    public void actionPerformed(ActionEvent ae){
+                        contenu.append("observateur jbo1: clic du bouton C\n");
+                    }
+                });
       
     }
     
