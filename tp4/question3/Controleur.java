@@ -34,15 +34,47 @@ public class Controleur extends JPanel {
 
         setLayout(new GridLayout(2, 1));
         add(donnee);
-        donnee.addActionListener(null /* null est à remplacer */);
+        
+        donnee.addActionListener(null);
         JPanel boutons = new JPanel();
         boutons.setLayout(new FlowLayout());
-        boutons.add(push);  push.addActionListener(null /* null est à remplacer */);
-        boutons.add(add);   add.addActionListener(null /* null est à remplacer */);
+        
+        boutons.add(push);  push.addActionListener(new ActionListener(){ 
+                    public void actionPerformed(ActionEvent ae){
+                      //     pile.empiler();
+                     // int d =  Integer.parseInt(donnee.getText());
+                      try {
+                      pile.empiler(Integer.parseInt(donnee.getText()));
+                       
+                      } catch (Exception  e){
+                          donnee.setText("Error");
+                        }
+                    }
+                });
+        boutons.add(add);   add.addActionListener(new ActionListener(){ 
+                    public void actionPerformed(ActionEvent ae){
+                      //     pile.empiler();
+                     // int d =  Integer.parseInt(donnee.getText());
+                      try {
+                        int a =   pile.depiler();
+                        int b = pile.depiler();
+                        int sum =a +b;
+                      pile.empiler(a + b);
+                       donnee.setText(Integer.toString(sum));
+                      } catch (Exception  e){
+                          donnee.setText("Error");
+                        }
+                    }
+                });
         boutons.add(sub);   sub.addActionListener(null /* null est à remplacer */);
         boutons.add(mul);   mul.addActionListener(null /* null est à remplacer */);
         boutons.add(div);   div.addActionListener(null /* null est à remplacer */);
-        boutons.add(clear); clear.addActionListener(null /* null est à remplacer */);
+        boutons.add(clear); clear.addActionListener(new ActionListener(){ 
+                    public void actionPerformed(ActionEvent ae){
+                            pile.taille();
+                                    //                       pile.empiler(this.donnee.to);
+                    }
+                });
         add(boutons);
         boutons.setBackground(Color.red);
         actualiserInterface();
@@ -50,6 +82,7 @@ public class Controleur extends JPanel {
 
     public void actualiserInterface() {
         // à compléter
+       //  new Controleur(pile);
     }
 
     private Integer operande() throws NumberFormatException {

@@ -12,7 +12,7 @@ public class IHMCalculette extends JFrame {
         super("IHM Calculette");
         PileModele<Integer> modele = new PileModele<Integer>(new Pile2<Integer>(5));
         Controleur controle = new Controleur(modele);
-        Vue2 vue = new Vue2(modele);
+        Vue vue = new Vue(modele);
 
         setLayout(new GridLayout(2, 1));
         add(vue);
