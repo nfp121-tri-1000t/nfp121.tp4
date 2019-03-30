@@ -24,7 +24,7 @@ public class Controleur extends JPanel {
         super();
         this.pile = pile;
         this.donnee = new JTextField(8);
-
+        
         this.push = new JButton("push");
         this.add = new JButton("+");
         this.sub = new JButton("-");
@@ -35,7 +35,17 @@ public class Controleur extends JPanel {
         setLayout(new GridLayout(2, 1));
         add(donnee);
         
-        donnee.addActionListener(null);
+        donnee.addActionListener(new ActionListener(){ 
+                    public void actionPerformed(ActionEvent ae){
+                      //     pile.empiler();
+                     // int d =  Integer.parseInt(donnee.getText());
+                      try {
+                          
+                      } catch (Exception  e){
+                          donnee.setText("Error");
+                        }
+                    }
+                });
         JPanel boutons = new JPanel();
         boutons.setLayout(new FlowLayout());
         
@@ -59,20 +69,67 @@ public class Controleur extends JPanel {
                         int a =   pile.depiler();
                         int b = pile.depiler();
                         int sum =a +b;
-                      pile.empiler(a + b);
-                       donnee.setText(Integer.toString(sum));
+                      pile.empiler(sum);
+                      donnee.setText(pile.toString());
+                       
                       } catch (Exception  e){
                           donnee.setText("Error");
                         }
                     }
                 });
-        boutons.add(sub);   sub.addActionListener(null /* null est à remplacer */);
-        boutons.add(mul);   mul.addActionListener(null /* null est à remplacer */);
-        boutons.add(div);   div.addActionListener(null /* null est à remplacer */);
+        boutons.add(sub);   sub.addActionListener(new ActionListener(){ 
+                    public void actionPerformed(ActionEvent ae){
+                      //     pile.empiler();
+                     // int d =  Integer.parseInt(donnee.getText());
+                      try {
+                        int a =   pile.depiler();
+                        int b = pile.depiler();
+                        int dif =b  - a;
+                      pile.empiler(dif);
+                       donnee.setText(pile.toString());
+                       
+                      } catch (Exception  e){
+                          donnee.setText("Error");
+                        }
+                    }
+                });
+        boutons.add(mul);   mul.addActionListener(new ActionListener(){ 
+                    public void actionPerformed(ActionEvent ae){
+                      //     pile.empiler();
+                     // int d =  Integer.parseInt(donnee.getText());
+                      try {
+                        int a =   pile.depiler();
+                        int b = pile.depiler();
+                        int m =a *b;
+                      pile.empiler(m);
+                     // pile.taille();
+                       donnee.setText(pile.toString());
+                       
+                      } catch (Exception  e){
+                          donnee.setText("Error");
+                        }
+                    }
+                });
+        boutons.add(div);   div.addActionListener(new ActionListener(){ 
+                    public void actionPerformed(ActionEvent ae){
+                      //     pile.empiler();
+                     // int d =  Integer.parseInt(donnee.getText());
+                      try {
+                        int a =   pile.depiler();
+                        int b = pile.depiler();
+                        int d =b / a;
+                      pile.empiler(d);
+                       donnee.setText(Integer.toString(d));
+                      } catch (Exception  e){
+                          donnee.setText("Error");
+                        }
+                    }
+                });
         boutons.add(clear); clear.addActionListener(new ActionListener(){ 
                     public void actionPerformed(ActionEvent ae){
-                            pile.taille();
-                                    //                       pile.empiler(this.donnee.to);
+                            donnee.setText("");
+                            
+                            //                       pile.empiler(this.donnee.to);
                     }
                 });
         add(boutons);
@@ -82,7 +139,20 @@ public class Controleur extends JPanel {
 
     public void actualiserInterface() {
         // à compléter
-       //  new Controleur(pile);
+        /*
+    if(this.pile.taille() >=2){ 
+      this.add.setEnabled(true);
+      this.sub.setEnabled(true);
+      this.mul.setEnabled(true);
+      this.div.setEnabled(true);
+    }else{
+      this.add.setEnabled(false);
+      this.sub.setEnabled(false);
+      this.mul.setEnabled(false);
+      this.div.setEnabled(false);
+    }*/
+    
+      
     }
 
     private Integer operande() throws NumberFormatException {

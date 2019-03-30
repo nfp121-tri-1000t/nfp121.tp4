@@ -1,4 +1,4 @@
-package question3;
+    package question3;
 
 import java.awt.Robot;
 import java.awt.*;
@@ -127,7 +127,7 @@ public class IHMCalculetteTest extends junit.framework.TestCase{
     }
 
    
-	
+    
     public void test_IHMCalculette_MauvaisFormatDuNombre() throws Exception{
         try{
             Container panel = f.getContentPane();
