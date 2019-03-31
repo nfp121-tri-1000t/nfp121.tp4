@@ -35,17 +35,7 @@ public class Controleur extends JPanel {
         setLayout(new GridLayout(2, 1));
         add(donnee);
         
-        donnee.addActionListener(new ActionListener(){ 
-                    public void actionPerformed(ActionEvent ae){
-                      //     pile.empiler();
-                     // int d =  Integer.parseInt(donnee.getText());
-                      try {
-                          
-                      } catch (Exception  e){
-                          donnee.setText("Error");
-                        }
-                    }
-                });
+        donnee.addActionListener(null);
         JPanel boutons = new JPanel();
         boutons.setLayout(new FlowLayout());
         
@@ -147,17 +137,38 @@ public class Controleur extends JPanel {
     public void actualiserInterface() {
         // à compléter
         
-    if(this.pile.taille() >=2){ 
-      this.add.setEnabled(true);
-      this.sub.setEnabled(true);
-      this.mul.setEnabled(true);
-      this.div.setEnabled(true);
-    }else{
-      this.add.setEnabled(false);
-      this.sub.setEnabled(false);
-      this.mul.setEnabled(false);
-      this.div.setEnabled(false);
-    }
+    if(pile.estVide()){
+          add.setEnabled(false);
+          sub.setEnabled(false);
+          mul.setEnabled(false);
+          div.setEnabled(false);
+          clear.setEnabled(false);
+          push.setEnabled(true);
+       }
+       else if(pile.taille()== 1){
+          add.setEnabled(false);
+          sub.setEnabled(false);
+          mul.setEnabled(false);
+          div.setEnabled(false);
+          clear.setEnabled(true);
+          push.setEnabled(true);
+        }
+        else if(pile.taille()> 1){
+          add.setEnabled(true);
+          sub.setEnabled(true);
+          mul.setEnabled(true);
+          div.setEnabled(true);
+          clear.setEnabled(true);
+          push.setEnabled(true);
+        }
+        else if(pile.estPleine()) {
+          push.setEnabled(false);
+          add.setEnabled(true);
+          sub.setEnabled(true);
+          mul.setEnabled(true);
+          div.setEnabled(true);
+          clear.setEnabled(true);
+        }
     
       
     }

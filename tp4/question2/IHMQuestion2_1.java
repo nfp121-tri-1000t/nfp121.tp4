@@ -30,6 +30,7 @@ public class IHMQuestion2_1 extends JFrame {
 
         // à compléter
         // le bouton A a 3 observateurs jbo1, jbo2 et jbo3
+        
             boutonA.addActionListener(new ActionListener(){ 
                     public void actionPerformed(ActionEvent ae){
                         contenu.append("observateur jbo3: clic du bouton A\n");
