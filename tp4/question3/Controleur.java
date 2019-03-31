@@ -55,7 +55,7 @@ public class Controleur extends JPanel {
                      // int d =  Integer.parseInt(donnee.getText());
                       try {
                       pile.empiler(Integer.parseInt(donnee.getText()));
-                       
+                      actualiserInterface(); 
                       } catch (Exception  e){
                           donnee.setText("Error");
                         }
@@ -70,8 +70,8 @@ public class Controleur extends JPanel {
                         int b = pile.depiler();
                         int sum =a +b;
                       pile.empiler(sum);
-                      donnee.setText(pile.toString());
-                       
+                     
+                         actualiserInterface(); 
                       } catch (Exception  e){
                           donnee.setText("Error");
                         }
@@ -86,8 +86,7 @@ public class Controleur extends JPanel {
                         int b = pile.depiler();
                         int dif =b  - a;
                       pile.empiler(dif);
-                       donnee.setText(pile.toString());
-                       
+                        actualiserInterface(); 
                       } catch (Exception  e){
                           donnee.setText("Error");
                         }
@@ -103,7 +102,7 @@ public class Controleur extends JPanel {
                         int m =a *b;
                       pile.empiler(m);
                      // pile.taille();
-                       donnee.setText(pile.toString());
+                    actualiserInterface(); 
                        
                       } catch (Exception  e){
                           donnee.setText("Error");
@@ -119,7 +118,7 @@ public class Controleur extends JPanel {
                         int b = pile.depiler();
                         int d =b / a;
                       pile.empiler(d);
-                       donnee.setText(Integer.toString(d));
+                        actualiserInterface(); 
                       } catch (Exception  e){
                           donnee.setText("Error");
                         }
@@ -127,8 +126,16 @@ public class Controleur extends JPanel {
                 });
         boutons.add(clear); clear.addActionListener(new ActionListener(){ 
                     public void actionPerformed(ActionEvent ae){
-                            donnee.setText("");
-                            
+                         
+                            for (int i=pile.taille()-1;i>=0;i--){
+                             try {  
+                                 pile.depiler();   
+                                  actualiserInterface(); 
+                                }
+                             catch (Exception e){
+                                donnee.setText("Error");
+                                }
+                            }
                             //                       pile.empiler(this.donnee.to);
                     }
                 });
@@ -139,7 +146,7 @@ public class Controleur extends JPanel {
 
     public void actualiserInterface() {
         // à compléter
-        /*
+        
     if(this.pile.taille() >=2){ 
       this.add.setEnabled(true);
       this.sub.setEnabled(true);
@@ -150,7 +157,7 @@ public class Controleur extends JPanel {
       this.sub.setEnabled(false);
       this.mul.setEnabled(false);
       this.div.setEnabled(false);
-    }*/
+    }
     
       
     }

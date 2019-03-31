@@ -50,6 +50,7 @@ public class PileModele<T> extends  java.util.Observable implements PileI<T> {
     public String toString() {
         return pile.toString();
     }
+    
 }
 
 /**
