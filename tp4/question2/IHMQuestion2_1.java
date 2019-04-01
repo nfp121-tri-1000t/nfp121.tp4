@@ -17,7 +17,7 @@ public class IHMQuestion2_1 extends JFrame {
     public IHMQuestion2_1() {
         super("IHM Question2_1");
         JPanel enHaut = new JPanel();
-        enHaut.add(boutonA);
+        enHaut.add(boutonA);    
         enHaut.add(boutonB);
         enHaut.add(boutonC);
         setLayout(new BorderLayout(5, 5));
@@ -31,41 +31,19 @@ public class IHMQuestion2_1 extends JFrame {
         // à compléter
         // le bouton A a 3 observateurs jbo1, jbo2 et jbo3
         
-            boutonA.addActionListener(new ActionListener(){ 
-                    public void actionPerformed(ActionEvent ae){
-                        contenu.append("observateur jbo3: clic du bouton A\n");
-                    }
-                });
-               boutonA.addActionListener(new ActionListener(){ 
-                    public void actionPerformed(ActionEvent ae){
-                        contenu.append("observateur jbo2: clic du bouton A\n");
-                    }
-                });
-                 boutonA.addActionListener(new ActionListener(){ 
-                    public void actionPerformed(ActionEvent ae){
-                        contenu.append("observateur jbo1: clic du bouton A\n");
-                    }
-                });
+            boutonA.addActionListener(new JButtonObserver("jbo1", contenu));
+            boutonA.addActionListener(new JButtonObserver("jbo2", contenu));
+            boutonA.addActionListener(new JButtonObserver("jbo3", contenu));
+        
         // ActionListener obj1 = new EcouteurDeBouton();
          
         // le bouton B a 2 observateurs jbo1 et jbo2
-                boutonB.addActionListener(new ActionListener(){ 
-                    public void actionPerformed(ActionEvent ae){
-                        contenu.append("observateur jbo2: clic du bouton B\n");
-                    }
-                });
-                 boutonB.addActionListener(new ActionListener(){ 
-                    public void actionPerformed(ActionEvent ae){
-                        contenu.append("observateur jbo1: clic du bouton B\n");
-                    }
-                });
+              boutonB.addActionListener(new JButtonObserver("jbo1", contenu));
+              
+            boutonB.addActionListener(new JButtonObserver("jbo2", contenu));
         // le bouton C a 1 observateur jbo1
-                   boutonC.addActionListener(new ActionListener(){ 
-                    public void actionPerformed(ActionEvent ae){
-                        contenu.append("observateur jbo1: clic du bouton C\n");
-                    }
-                });
-      
+               boutonC.addActionListener(new JButtonObserver("jbo1", contenu));
+           // boutonA.addActionListener(new JButtonObserver("jbo2", contenu));
     }
     
     public static void main(String[] args){
